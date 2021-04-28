@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import USGSQuery from './query';
-import kbn from 'grafana/app/core/utils/kbn';
+import rangeutil from 'grafana/packages/grafana-data/src/datetime';
 
 // From: https://help.waterdata.usgs.gov/tz
 const _MSPH = 60 * 60 * 1000;
@@ -108,7 +108,7 @@ export default class USGSDatasource {
 
     const jsonData = instanceSettings.jsonData || {};
 
-    this.maxIVinterval = kbn.interval_to_ms(jsonData.jsonData || '3h');
+    this.maxIVinterval = rangeutil.interval_to_ms(jsonData.jsonData || '3h');
     //console.log('Set max interval to:', this.maxIVinterval);
   }
 
