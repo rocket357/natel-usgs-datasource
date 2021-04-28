@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import USGSQuery from './query';
-import rangeutil from 'grafana/packages/grafana-data/src/datetime';
+import rangeutil from 'grafana/app/core/utils/kbn';
 
 // From: https://help.waterdata.usgs.gov/tz
 const _MSPH = 60 * 60 * 1000;
@@ -88,6 +88,10 @@ const TZ_OFFSETS = {
   ZP6: 6 * _MSPH,
 };
 
+// Grafana 7.2 workaround
+if (typeof kbn["intervalToMs"] === "function") {
+   kbn.interval_to_ms = kbn.intervalToMs;
+}
 export default class USGSDatasource {
   id: number;
   name: string;
