@@ -108,7 +108,7 @@ export default class USGSDatasource {
 
     const jsonData = instanceSettings.jsonData || {};
 
-    this.maxIVinterval = rangeutil.interval_to_ms(jsonData.jsonData || '3h');
+    this.maxIVinterval = rangeutil.intervalToMs(jsonData.jsonData || '3h');
     //console.log('Set max interval to:', this.maxIVinterval);
   }
 
